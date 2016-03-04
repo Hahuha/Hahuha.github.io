@@ -1,0 +1,13 @@
+nav {
+  font-size: 1.7em;
+  color: rgba($text-color, 0.9);
+  & > div {
+    display: inline-block;
+  }
+  .info {
+    .morph-button.morph-button-overlay.morph-button-fixed {
+      background-color: transparent;
+      margin: auto;
+    }
+  }
+}

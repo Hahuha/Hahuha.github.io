@@ -1,0 +1,18 @@
+.wrapper {
+  width: 800px;
+  margin: auto auto;
+}
+
+.post-list {
+  width: 100%;
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  .post {
+    background-color: lighten($background-color, 20%);
+    margin: 1em;
+  }
+}
