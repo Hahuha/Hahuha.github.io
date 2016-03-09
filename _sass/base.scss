@@ -1,19 +1,44 @@
 body {
-  background-color: $background-color;
+  margin: 0;
   color: $text-color;
+  font-family: $base-font-family;
   font-size: $base-font-size;
+
+}
+
+#home {
+    background-color: $background-color;
+}
+
+#list {
+  background-color: pink;
+}
+
+#content {
+  background-color: green;
 }
 
 h1.main-title {
   text-align: center;
+  font-family: 'Raleway';
   font-size: 3.5em;
-  color: lighten($background-color, 12%);
+  font-variant: small-caps;
+  font-weight: 100;
+
+
+  &::after{
+    border-top: .0005em solid rgba($text-color, .5);
+    content: '';
+    display: block;
+    margin: 0 auto;
+    margin-top: 0.2em;
+    width: 10%;
+  }
 }
 
 p.short-description {
   text-align: center;
   font-size:1em;
-  color: lighten($background-color, 15%);
 }
 
 p.author {

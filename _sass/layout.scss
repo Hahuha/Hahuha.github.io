@@ -1,6 +1,30 @@
-.wrapper {
-  width: 800px;
-  margin: auto auto;
+#home, #list, #content {
+  // position: relative;
+  // height: 100vh;
+}
+
+#home {
+  .articles, .projects {
+    position: absolute;
+    bottom: 0;
+
+    width: 50%;
+    height: 50%;
+
+    background-color: $article-color;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .articles {
+    left: 0;
+  }
+
+  .projects {
+    right: 0;
+
+    background-color: $project-color;
+  }
 }
 
 .post-list {
@@ -13,6 +37,5 @@
 
   .post {
     background-color: lighten($background-color, 20%);
-    margin: 1em;
   }
 }

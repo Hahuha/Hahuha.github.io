@@ -2,25 +2,12 @@
 layout: default
 ---
 
-<div class="home">
+<div id="pt-main" class="pt-perspective">
 
-  <h1 class="main-title">Lorem ipsum</h1>
-  <p class="short-description">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-  </p>
-  <p class="author">
-    Valentin Carmignac
-  </p>
+  {% include home.html %}
 
-  <div class="post-list">
-      <div class="post" >
-          <h3><a href="{{ "/articles" | prepend: site.baseurl }}">POSTS</a></h3>
-      </div>
-      <div class="post" >
-          <h3><a href="{{ "/projects" | prepend: site.baseurl }}">ARTICLES</a></h3>
-      </div>
-  </div>
+  {% include list.html %}
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  {% include content.html %}
 
 </div>

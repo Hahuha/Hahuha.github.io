@@ -1,13 +1,126 @@
-nav {
-  font-size: 1.7em;
-  color: rgba($text-color, 0.9);
-  & > div {
-    display: inline-block;
+.navigation {
+  margin  : 20px;
+  position: absolute;
+  right   : 0;
+  top     : 0;
+
+  [class^="bl-"],
+  [class*=" bl-"] {
+    display: block;
+    margin : auto;
+    height : 1em;
+    width  : 1em;
   }
-  .info {
-    .morph-button.morph-button-overlay.morph-button-fixed {
-      background-color: transparent;
-      margin: auto;
+
+  & > div {
+    border-radius : 1em;
+    color         : $background-color;
+    cursor        : pointer;
+    display       : inline-block;
+    fill          : $text-color;
+    margin-right  : 0.3em;
+    padding       : 0.2em;
+    vertical-align: top;
+    max-width     : 1em;
+    // @include animation (close-nav .5s ease-in-out forwards);
+    &::after {
+      content       : attr(data-info);
+      visibility    : hidden;
+      font-weight   : 900;
+      font-size     : 0.7em;
+      letter-spacing: 0.2em;
+      overflow      : hidden;
+      max-height    : 0;
+      padding-top   : 0.6em;
+      text-align    : center;
+      text-transform: uppercase;
+      text-overflow : ellipsis;
+      white-space   : nowrap;
+      word-break    : keep-all;
+      word-wrap     : normal;
+      writing-mode  : vertical-rl;
+      //@include animation (close-nav-info 1s ease-in-out forwards);
+    }
+
+    &:hover {
+      @include animation (open-nav 0.5s ease-out forwards);
+
+      &::after {
+        visibility: visible;
+        @include animation (open-nav-info 0.8s ease-out forwards);
+      }
     }
   }
+}
+
+@include keyframes(open-nav) {
+  from {}
+
+  10% {
+    background-color: $text-color;
+    color           : $background-color;
+    fill            : $background-color;
+  }
+
+  to {
+    background-color: $text-color;
+    color           : $background-color;
+    fill            : $background-color;
+  }
+}
+
+@include keyframes(close-nav) {
+  from {
+    background-color: $text-color;
+    color           : $background-color;
+    fill            : $background-color;
+  }
+
+  70% {
+    background-color: rgba($text-color, 0.9);
+  }
+
+  80% {
+    background-color: rgba($text-color, 0.8);
+  }
+
+  90% {
+    background-color: rgba($text-color, 0.7);
+    color           : $background-color;
+    fill            : $background-color;
+  }
+
+  to {}
+}
+
+@include keyframes(open-nav-info) {
+  from {}
+
+  10% {
+    max-height: 0;
+    color     : $background-color;
+  }
+
+  70% {
+    max-height: 100%;
+    padding-top   : 0.8em;
+  }
+
+  to {
+    max-height: 100%;
+    padding-top   : 0.6em;
+    color     : $background-color;
+  }
+}
+
+@include keyframes(close-nav-info) {
+  from {
+    max-height: 100%;
+  }
+
+  10% {
+    max-height: 0;
+  }
+
+  to {}
 }

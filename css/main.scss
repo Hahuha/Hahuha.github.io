@@ -3,20 +3,23 @@
 ---
 @charset "utf-8";
 
-
-
 // Our variables
-// http://paletton.com/#uid=73L0p0kuiiUvNtru4nlwudexs7O
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+// http://paletton.com/#uid=53G0F0kzUuzlqCIri-0BIomHkiY
+// http://paletton.com/#uid=53G0u0kzUuzlqCIri-0BIomHkiY
+$base-font-family: "Lato", Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$base-line-height: 1.5em;
 
 $spacing-unit:     30px;
 
 $text-color:       #F5F5F5;
-$background-color: #0F2965;
+$background-color: #0D46A1;
+
+$article-color: #c62828;
+$project-color: #33691E;
+
 $brand-color:      #2a7ae2;
 
 $grey-color:       #fff;
@@ -25,11 +28,8 @@ $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
 $content-width:    800px;
-
 $on-palm:          600px;
 $on-laptop:        800px;
-
-
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -44,12 +44,10 @@ $on-laptop:        800px;
     }
 }
 
-
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
+        "mixins",
         "base",
         "layout",
-        "morph-button",
         "navigation"
 ;
