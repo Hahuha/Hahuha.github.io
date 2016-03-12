@@ -384,7 +384,7 @@ var PageTransitions = (function() {
 	init();
 
 	return {
-		init : init,
+  init: init,
 		nextPage : nextPage,
 	};
 

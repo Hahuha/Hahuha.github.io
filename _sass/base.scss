@@ -18,13 +18,16 @@ body {
   background-color: green;
 }
 
+/**
+ * Page HOME
+ */
 h1.main-title {
   text-align: center;
-  font-family: 'Raleway';
-  font-size: 3.5em;
+  font-family: $header-font-family;
+  font-size: 5em;
   font-variant: small-caps;
   font-weight: 100;
-
+  padding-top: 1em;
 
   &::after{
     border-top: .0005em solid rgba($text-color, .5);
@@ -36,13 +39,24 @@ h1.main-title {
   }
 }
 
-p.short-description {
+p.blog-description {
   text-align: center;
   font-size:1em;
 }
 
-p.author {
-  text-align: center;
-  font-size: 1em;
-  color: lighten($background-color, 18%);
+#cat-link {
+  .articles, .projects {
+    font-family: $header-font-family;
+    font-size: 2em;
+  }
+
+  .articles {
+    color: $article-color;
+    text-align: left;
+  }
+
+  .projects {
+    text-align: right;
+    background-color: $project-color;
+  }
 }

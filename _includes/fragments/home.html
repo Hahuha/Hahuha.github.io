@@ -1,11 +1,9 @@
 <div id="home" class="pt-page pt-page-1">
-  {% include navigation.html parent="-1"%}
+  {% include components/navigation.html parent="-1"%}
 
   <h1 class="main-title">{{ site.title }}</h1>
-  <!-- <p class="short-description">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-  </p>
-  <p class="author">
+  <p class="blog-description">{{ site.description }}</p>
+  <!-- <p class="author">
     Valentin Carmignac
   </p> -->
 
@@ -18,4 +16,7 @@
 
   <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
 
+  <p id="cat-link">
+    <a class="articles" href="#">Articles</a><a class="projects" href="#">Projects</a>
+  </p>
 </div>
