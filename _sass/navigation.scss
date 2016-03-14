@@ -24,23 +24,25 @@
     max-width     : 1em;
     // @include animation (close-nav .5s ease-in-out forwards);
     &::after {
-      content       : attr(data-info);
-      visibility    : hidden;
-      font-weight   : 900;
-      font-size     : 0.7em;
-      letter-spacing: 0.2em;
-      overflow      : hidden;
-      max-height    : 0;
-      padding-top   : 0.6em;
-      text-align    : center;
-      text-transform: uppercase;
-      text-overflow : ellipsis;
-      white-space   : nowrap;
-      word-break    : keep-all;
-      word-wrap     : normal;
-      writing-mode: vertical-rl;
-      -ms-writing-mode: vertical-rl;
-      -webkit-writing-mode: vertical-rl;
+      content             : attr(data-info);
+      visibility          : hidden;
+      font-weight         : 900;
+      font-size           : 0.7em;
+      letter-spacing      : 0.2em;
+      overflow            : hidden;
+      max-height          : 0;
+      padding-top         : 0.6em;
+      text-align          : center;
+      text-transform      : uppercase;
+      text-overflow       : ellipsis;
+      white-space         : nowrap;
+      word-break          : keep-all;
+      word-wrap           : normal;
+      -webkit-writing-mode: tb-rl;
+      -moz-writing-mode   : tb-rl;
+      -ms-writing-mode    : tb-rl;
+      -o-writing-mode     : tb-rl;
+      writing-mode        : tb-rl;
       //@include animation (close-nav-info 1s ease-in-out forwards);
     }
 
@@ -48,20 +50,23 @@
       @include animation (open-nav 0.5s ease-out forwards);
 
       &::after {
+        display   : block;
         visibility: visible;
-        @include animation (open-nav-info 0.8s ease-out forwards);
+        @include animation (open-nav-info 0.8s ease-in forwards);
       }
     }
   }
 }
 
 @include keyframes(open-nav) {
-  from {}
-
-  10% {
-    background-color: $text-color;
+  from {
+    background-color: rgba($text-color, 0.1);
     color           : $background-color;
     fill            : $background-color;
+  }
+
+  50% {
+    background-color: rgba($text-color, 0.5);
   }
 
   to {
@@ -78,51 +83,56 @@
     fill            : $background-color;
   }
 
-  70% {
+  50% {
     background-color: rgba($text-color, 0.9);
   }
 
-  80% {
-    background-color: rgba($text-color, 0.8);
-  }
-
-  90% {
-    background-color: rgba($text-color, 0.7);
+  to {
+    background-color: rgba($text-color, 0.1);
     color           : $background-color;
     fill            : $background-color;
   }
-
-  to {}
 }
 
 @include keyframes(open-nav-info) {
-  from {}
+  from {
+    padding-top: 0;
+  }
 
-  10% {
+  50% {
     max-height: 0;
-    color     : $background-color;
   }
 
   70% {
-    max-height: 100%;
-    padding-top   : 0.8em;
+    max-height : 10em;
+    padding-top: 0.8em;
   }
 
   to {
-    max-height: 100%;
-    padding-top   : 0.6em;
-    color     : $background-color;
+    max-height : 10em;
+    padding-top: 0.6em;
+    color      : $background-color;
   }
 }
 
 @include keyframes(close-nav-info) {
   from {
-    max-height: 100%;
+    max-height : 10em;
+    padding-top: 0.6em;
+    color      : $background-color;
   }
 
-  10% {
+  30% {
+    max-height : 5em;
+    padding-top: 0.8em;
+  }
+
+  50% {
+    max-height: 3em;
+    color     : $background-color;
+  }
+
+  to {
     max-height: 0;
   }
-
-  to {}
 }

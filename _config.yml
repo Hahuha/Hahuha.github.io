@@ -9,7 +9,7 @@
 title: Simple Thoughts
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  Keep your code simple <span>or die tryin'</span>
+  Keep your code simple <span class="hvr-sweep-to-right">or die tryin'</span>
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://carvallegro.github.io/" # the base hostname & protocol for your site
 twitter_username: jekyllrb
@@ -17,3 +17,5 @@ github_username:  carvallegro
 
 # Build settings
 markdown: kramdown
+sass:
+    style: compressed

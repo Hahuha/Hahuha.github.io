@@ -1,13 +1,12 @@
 body {
-  margin: 0;
-  color: $text-color;
+  margin     : 0;
+  color      : $text-color;
   font-family: $base-font-family;
-  font-size: $base-font-size;
-
+  font-size  : $base-font-size;
 }
 
 #home {
-    background-color: $background-color;
+  background-color: $background-color;
 }
 
 #list {
@@ -17,46 +16,60 @@ body {
 #content {
   background-color: green;
 }
-
 /**
  * Page HOME
  */
 h1.main-title {
-  text-align: center;
-  font-family: $header-font-family;
-  font-size: 5em;
+  text-align  : center;
+  font-family : $header-font-family;
+  font-size   : 5em;
   font-variant: small-caps;
-  font-weight: 100;
-  padding-top: 1em;
+  font-weight : 100;
+  padding-top : 1vh;
 
-  &::after{
-    border-top: .0005em solid rgba($text-color, .5);
-    content: '';
-    display: block;
-    margin: 0 auto;
-    margin-top: 0.2em;
-    width: 10%;
+  &::after {
+    border-top: 0.0005rem solid rgba($text-color, .5);
+    content   : '';
+    display   : block;
+    margin    : 0.2rem auto 0;
+    width     : 10%;
   }
 }
 
 p.blog-description {
-  text-align: center;
-  font-size:1em;
+  text-align  : center;
+  font-size   : 1.1rem;
+  font-variant: small-caps;
+  font-weight : bold;
+  line-height : 0.8 + 1.1rem;
+
+  span.hvr-sweep-to-right {
+    color         : $background-color;
+    margin-left   : 0.3em;
+    padding-left  : 0.3rem;
+    padding-right : 0.3rem;
+    vertical-align: top;
+
+    &::before {
+      background-color: $text-color;
+    }
+  }
 }
 
 #cat-link {
-  .articles, .projects {
+  .articles,
+  .projects {
     font-family: $header-font-family;
-    font-size: 2em;
+    font-size  : 2rem;
   }
 
   .articles {
-    color: $article-color;
+    color     : $article-color;
     text-align: left;
   }
 
   .projects {
+    color     : $project-color;
     text-align: right;
-    background-color: $project-color;
   }
 }
