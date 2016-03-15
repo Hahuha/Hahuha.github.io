@@ -1,4 +1,5 @@
-.navigation {
+.menu {
+  cursor: default;
   margin  : 20px;
   position: absolute;
   right   : 0;
@@ -8,41 +9,58 @@
   [class*=" bl-"] {
     display: block;
     margin : auto;
-    height : 1em;
-    width  : 1em;
+    height : 1rem;
+    width  : 1rem;
+  }
+
+  & > span {
+    font-size: 1.5rem;
+    font-weight: 100;
+    line-height: 1.5rem;
+    vertical-align: top;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+
   }
 
   & > div {
-    border-radius : 1em;
+    border-radius : 1rem;
     color         : $background-color;
     cursor        : pointer;
     display       : inline-block;
     fill          : $text-color;
-    margin-right  : 0.3em;
-    padding       : 0.2em;
+    margin-right  : 0.15rem;
+    margin-left: 0.15rem;
+    padding       : 0.2rem;
     vertical-align: top;
-    max-width     : 1em;
+    max-width     : 1rem;
+
     // @include animation (close-nav .5s ease-in-out forwards);
     &::after {
-      content             : attr(data-info);
-      visibility          : hidden;
-      font-weight         : 900;
-      font-size           : 0.7em;
-      letter-spacing      : 0.2em;
-      overflow            : hidden;
-      max-height          : 0;
-      padding-top         : 0.6em;
-      text-align          : center;
-      text-transform      : uppercase;
-      text-overflow       : ellipsis;
-      white-space         : nowrap;
-      word-break          : keep-all;
-      word-wrap           : normal;
+      content       : attr(data-info);
+      visibility    : hidden;
+      font-weight   : 900;
+      font-size     : 0.7rem;
+      letter-spacing: 0.2rem;
+      line-height   : 1rem;
+      overflow      : hidden;
+      max-height    : 0;
+      text-align    : center;
+      text-transform: uppercase;
+      text-overflow : ellipsis;
+      vertical-align: middle;
+      white-space   : nowrap;
+      word-break    : keep-all;
+      word-wrap     : normal;
       -webkit-writing-mode: tb-rl;
-      -moz-writing-mode   : tb-rl;
-      -ms-writing-mode    : tb-rl;
-      -o-writing-mode     : tb-rl;
-      writing-mode        : tb-rl;
+      -moz-writing-mode: tb-rl;
+      -ms-writing-mode: tb-rl;
+      -o-writing-mode: tb-rl;
+      writing-mode: tb-rl;
       //@include animation (close-nav-info 1s ease-in-out forwards);
     }
 
@@ -52,7 +70,7 @@
       &::after {
         display   : block;
         visibility: visible;
-        @include animation (open-nav-info 0.8s ease-in forwards);
+        @include animation (open-nav-info 0.45s ease-in forwards);
       }
     }
   }
@@ -96,39 +114,40 @@
 
 @include keyframes(open-nav-info) {
   from {
-    padding-top: 0;
-  }
+      padding-top: 0;
+    }
 
-  50% {
-    max-height: 0;
-  }
+    50% {
+      max-height: 0;
+    }
 
-  70% {
-    max-height : 10em;
-    padding-top: 0.8em;
-  }
+    70% {
+      max-height: 10rem;
+      padding-top   : 0.8rem;
+    }
 
-  to {
-    max-height : 10em;
-    padding-top: 0.6em;
-    color      : $background-color;
-  }
+    to {
+      max-height: 10rem;
+      padding-top   : 0.6rem;
+      padding-bottom: 0.1rem;
+      color     : $background-color;
+    }
 }
 
 @include keyframes(close-nav-info) {
   from {
-    max-height : 10em;
-    padding-top: 0.6em;
+    max-height : 10rem;
+    padding-top: 0.6rem;
     color      : $background-color;
   }
 
   30% {
-    max-height : 5em;
-    padding-top: 0.8em;
+    max-height : 5rem;
+    padding-top: 0.8rem;
   }
 
   50% {
-    max-height: 3em;
+    max-height: 3rem;
     color     : $background-color;
   }
 
