@@ -1,11 +1,13 @@
 var BlogManager= (function() {
-  var pages= {
+  var pages = {
       home: 0,
       list: 1,
       content: 2
     },
-    articles = null,
-    projects = null,
+    data =  {
+      articles : null,
+      projects : null
+    },
     loadError = {
       hasError: false,
       messages: []
@@ -18,21 +20,55 @@ var BlogManager= (function() {
       toPage (transitions.up, index - 1 );
     });
 
+    $('.breadcrumb [data-level="0"]').click(function () {
+      toPage (transitions.up, pages.home);
+    });
+    $('.breadcrumb [data-level="1"]').click(function () {
+      toPage (transitions.up, pages.list);
+    });
+
     $('#cat-link .articles').click(function () {
+      $('#list .wrapper, #content .wrapper').removeClass('projects').addClass('articles');
+      $('#list .wrapper h1').text('Articles');
+      $('#list .list').empty();
+      $('.breadcrumb [data-level="1"]').text("articles");
+      _.each(data.articles, function (value, key, list) {
+        createListElement ('articles', value);
+      });
       toPage (transitions.down, pages.list);
     });
 
     $('#cat-link .projects').click(function () {
+      $('#list .wrapper, #content .wrapper').removeClass('articles').addClass('projects');
+      $('#list .wrapper h1').text('Projects');
+      $('#list .list').empty();
+      $('.breadcrumb [data-level="1"]').text("projects");
+      _.each(data.projects, function (value, key, list) {
+        createListElement ('projects', value);
+      });
       toPage (transitions.down, pages.list);
+    });
+  }
+
+  function createListElement (section, value) {
+    $('#content .breadcrumb li:last-child').text(value.title);
+    var listElem = '<li><a href="#" data-id="'+value.id+'"><span class="date">'+value.date+'</span><span class="title">'+value.title+'</span></a></li>';
+    $(listElem).appendTo('#list .list').children('a').click(function () {
+      var result = _.findWhere(data[section], {id: $(this).data("id")});
+      if (result != undefined) {
+        $('#content h1').text(result.title);
+        $('#content .article').html(result.content);
+      }
+      toPage (transitions.down, pages.content);
     });
   }
 
   function load() {
     var articleLoading = $.getJSON('/feed_article.json')
-      .done(function(data) {
-        console.log("dsfdfd");
-        articles = data;
-        console.log(articles);
+      .done(function(obj) {
+        console.log("article");
+        data.articles = obj;
+        console.log(data.articles);
       })
       .fail(function(jqxhr, textStatus, error) {
         loadError.hasError = true;
@@ -42,17 +78,18 @@ var BlogManager= (function() {
         console.error(jqxhr);
       });
 
-    // $.getJSON('/feed_project.json')
-    //   .done(function(data) {
-    //     projects = data;
-    //     console.log(projects);
-    //   })
-    //   .fail(function(jqxhr, textStatus, error) {
-    //     loadError.hasError = true;
-    //     loadError.messages.push("Error while loading projects.");
-    //     var err = textStatus + ", " + error;
-    //     console.log("Request Failed: " + err);
-    //   });
+    $.getJSON('/feed_project.json')
+      .done(function(obj) {
+        console.log("project");
+        data.projects = obj;
+        console.log(data.projects);
+      })
+      .fail(function(jqxhr, textStatus, error) {
+        loadError.hasError = true;
+        loadError.messages.push("Error while loading projects.");
+        var err = textStatus + ", " + error;
+        console.log("Request Failed: " + err);
+      });
   }
 
   function toPage(transition, to, options) {
@@ -90,10 +127,10 @@ var BlogManager= (function() {
   init();
 
   return {
-    articles: articles,
+    articles: data.articles,
     load: load,
     loadError: loadError,
-    projects: projects,
+    projects: data.projects,
     resetError: resetError
   };
 })();
