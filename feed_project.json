@@ -1,13 +1,13 @@
 ---
 ---
-  [
-  {% for post in site.posts %}
-      {
-        "id" : "{{ post.title | xml_escape }}",
-        "title"    : "{{ post.title }}",
-        "url"     : "{{ post.url }}",
-        "date"     : "{{ post.date | date: "%B %d, %Y" }}",
-        "content"  : "{{ post.content | escape }}"
-      }{% if forloop.last %}{% else %},{% endif %}
+[
+  {%  for post in site.posts %}
+    {
+      "id" : "{{ post.title | xml_escape }}",
+      "title": "{{ post.title | xml_escape }}",
+      "url": "{{ post.url | xml_escape}}",
+      "date": "{{ post.date | date_to_string | xml_escape}}",
+      "content": "{{ post.content | strip_newlines | uri_escape }}"
+    }{% if forloop.last %} {% else %}, {% endif %}
   {% endfor %}
-  ]
+]

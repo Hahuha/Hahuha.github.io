@@ -57,7 +57,9 @@ var BlogManager= (function() {
       var result = _.findWhere(data[section], {id: $(this).data("id")});
       if (result != undefined) {
         $('#content h1').text(result.title);
-        $('#content .article').html(result.content);
+        $('#content .article').html(decodeURI(result.content));
+        console.log(result.content);
+        console.log(decodeURI(result.content));
       }
       toPage (transitions.down, pages.content);
     });
