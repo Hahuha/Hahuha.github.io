@@ -1,22 +1,22 @@
 <div class="menu" >
 
   <div class="share" data-info="share">
-   <svg class="bl-share"><use xlink:href="#bl-share"></use></svg>
+    {% include components/svg.html id="share" %}
   </div>
   <div class="info" data-info="about me">
-   <svg class="bl-info"><use xlink:href="#bl-info"></use></svg>
+    {% include components/svg.html id="info" %}
   </div>
 
   {% if include.enableNav and include.enableNav == "true" %}
   <span class="separator">&#10744;</span>
   <div class="newest" data-info="newest">
-   <svg class="bl-arrow-left"><use xlink:href="#bl-arrow-left"></use></svg>
+    {% include components/svg.html id="arrow-left" %}
   </div>
   <div class="go-up" data-info="go up" {% if include.index  %}data-index="{{include.index}}"{% endif %}>
-   <svg class="bl-arrow-up"><use xlink:href="#bl-arrow-up"></use></svg>
+    {% include components/svg.html id="arrow-up" %}
   </div>
   <div class="older" data-info="older">
-   <svg class="bl-arrow-right"><use xlink:href="#bl-arrow-right"></use></svg>
+    {% include components/svg.html id="arrow-right" %}
   </div>
   {% endif %}
 </div>
