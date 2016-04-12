@@ -9,12 +9,12 @@ $(function() {
   //   console.log("loaded !");
   // }
   // bManager.resetError();
+
+  // Gestion de l'ouverture de la section "About Me"
+  $('#about .close-btn').click(function () {
+    $('#about').addClass('closed').removeClass('opened');
+  });
+  $('.menu .info').click(function () {
+    $('#about').addClass('opened').removeClass('removed');
+  })
 });
-
-
-// $('.go-up').click(function() {
-//   PageTransitions.nextPage({
-//     animation: 4,
-//     showPage: $(this).data('parent') - 1
-//   });
-// });

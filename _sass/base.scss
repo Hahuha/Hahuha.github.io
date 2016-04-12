@@ -19,6 +19,7 @@ h6 {
   color      : $emphasis-color;
   font-family: $header-font-family;
   font-weight: 400;
+  text-align: center;
 }
 
 a {
@@ -120,6 +121,9 @@ p {
   }
 }
 
+/*
+ * LISTS
+ */
 ul.list {
   font-family: $header-font-family;
   font-size: .7rem;
@@ -146,6 +150,9 @@ ul.list {
   }
 }
 
+/*
+ * BREADCRUMBS
+ */
 .breadcrumb {
   border          : .2em solid transparent;
   font-family     : $header-font-family;
@@ -198,6 +205,9 @@ ul.list {
   }
 }
 
+/*
+ * HIGHLIGHT
+ */
 span.highlight {
   color      : $emphasis-color;
   font-size  : .8em;
@@ -216,6 +226,9 @@ span.highlight {
   }
 }
 
+/*
+ * NOTIFICATION
+ */
 span.notification {
   background-color: $text-color;
   border-bottom   : .35em solid $emphasis-color;
@@ -225,6 +238,9 @@ span.notification {
   padding         : .4em .6em;
 }
 
+/*
+ * TOOLTIP
+ */
 span.tooltip {
   font-weight: 600;
   padding: .1em .2em;
@@ -288,8 +304,8 @@ span.tooltip {
     }
   }
 }
-@each $key,
-$value in $color-map {
+
+@each $key,$value in $color-map {
   // Headers
   @for $i from 1 through 4 {
     h#{$i}.#{$key},
