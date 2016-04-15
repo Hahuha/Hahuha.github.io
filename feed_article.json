@@ -7,7 +7,11 @@
       "title": "{{ post.title | xml_escape }}",
       "url": "{{ post.url | xml_escape}}",
       "date": "{{ post.date | date_to_string | xml_escape}}",
-      "content": "{{ post.content | strip_newlines | uri_escape }}"
+      {% if post.style == 'markdown' %}
+        "content": "{{ post.content | markdownify | strip_newlines | uri_escape }}"
+      {% else %}
+        "content": "{{ post.content | strip_newlines | uri_escape }}"
+      {% endif %}
     }{% if forloop.last %} {% else %}, {% endif %}
   {% endfor %}
 ]
