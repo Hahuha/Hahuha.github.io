@@ -1,36 +1,28 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+ # Only the main Sass file needs front matter (the dashes are enough)
 ---
-@charset "utf-8";
-// Our variables
+
+@charset  "utf-8"; // Our variables
 // http://paletton.com/#uid=63G0W0kzUuzlqCIri-0BIomHkiY
 $base-font-family: 'Lato', Helvetica, Arial, sans-serif;
 $header-font-family: 'Raleway', Helvetica, Arial, sans-serif;
-
 $base-font-size: calc(100% + 0.5vw);
 $base-font-weight: 400;
 $base-line-height: 1.5em;
 $spacing-unit: 30px;
-
 $text-color: #F5F5F5;
 $background-color: #0D46A1;
-
 $emphasis-color: #8A48C0;
 $article-color: #23CB00;
 $project-color: #F39B00;
 $color-map: (default: $emphasis-color, articles: $article-color, projects: $project-color, about: $background-color);
-
-
 $grey-color: #fff;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark: darken($grey-color, 25%);
-
 // Width of the content area
 $content-width: 800px;
 $on-palm: 600px;
 $on-laptop: 800px;
-
-
 // Use media queries like this:
 // @include media-query($on-palm) {
 //     .wrapper {
@@ -38,19 +30,10 @@ $on-laptop: 800px;
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
-
 @mixin media-query($device) {
-  @media screen and (max-width: $device) {
+   @media screen and (max-width: $device){
     @content;
   }
 }
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-    "hovercss/hover.scss",
-    "lato",
-    "raleway",
-    "mixins",
-    "base",
-    "about",
-    "layout",
-    "navigation";
+@import "hovercss/hover.scss", "lato", "raleway", "mixins", "base", "about", "layout", "navigation";

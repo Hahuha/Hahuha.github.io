@@ -1,15 +1,17 @@
-#home, #list, #content {
+#content,
+#home,
+#list {
   // position: relative;
   // height: 100vh;
 }
 
 .post-list {
-  width: 100%;
-  display: inline-flex;
-  flex-flow: row wrap;
+  width          : 100%;
+  display        : inline-flex;
+  flex-flow      : row wrap;
   justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
+  align-items    : flex-start;
+  align-content  : flex-start;
 
   .post {
     background-color: lighten($background-color, 20%);
