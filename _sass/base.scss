@@ -73,18 +73,26 @@ p {
     font-variant: small-caps;
     font-weight : bold;
     line-height : 0.8 + 1.1rem;
+    position: relative;
     text-align  : center;
 
     span.hvr-sweep-to-right {
       color         : $background-color;
+      display: inline-block;
+      font-weight: normal;
       margin-left   : 0.3em;
       padding-left  : 0.3rem;
       padding-right : 0.3rem;
+      position: absolute;
       vertical-align: top;
 
       &::before {
         background-color: $text-color;
       }
+    }
+
+    &:hover span {
+      @extend .hvr-sweep-to-right:hover;
     }
   }
 
