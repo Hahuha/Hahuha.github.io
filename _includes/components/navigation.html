@@ -9,14 +9,18 @@
 
   {% if include.enableNav and include.enableNav == "true" %}
   <span class="separator">&#10744;</span>
+  {% if include.left and include.left == "true" %}
   <div class="go-left" data-info="newest">
     {% include components/svg.html id="arrow-left" %}
   </div>
+  {% endif %}
   <div class="go-up" data-info="go up" {% if include.index  %}data-index="{{include.index}}"{% endif %}>
     {% include components/svg.html id="arrow-up" %}
   </div>
+  {% if include.right and include.right == "true" %}
   <div class="go-right" data-info="older">
     {% include components/svg.html id="arrow-right" %}
   </div>
+  {% endif %}
   {% endif %}
 </div>
