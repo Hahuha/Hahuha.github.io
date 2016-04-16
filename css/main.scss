@@ -10,6 +10,7 @@ $base-font-size: calc(100% + 0.5vw);
 $base-font-weight: 400;
 $base-line-height: 1.5em;
 $spacing-unit: 30px;
+
 $text-color: #F5F5F5;
 $background-color: #0D46A1;
 $emphasis-color: #8A48C0;
@@ -19,10 +20,15 @@ $color-map: (default: $emphasis-color, articles: $article-color, projects: $proj
 $grey-color: #fff;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark: darken($grey-color, 25%);
+
 // Width of the content area
 $content-width: 800px;
 $on-palm: 600px;
 $on-laptop: 800px;
+
+// Timing for transition
+$load-post-timing: 1s;
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //     .wrapper {

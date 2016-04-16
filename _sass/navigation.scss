@@ -1,6 +1,7 @@
 .menu {
   cursor: default;
   margin  : 20px;
+  opacity: 1;
   position: absolute;
   right   : 0;
   top     : 0;
@@ -26,7 +27,6 @@
     user-select:none;
 
   }
-
   & > div {
     border-radius : 1rem;
     color         : $background-color;
@@ -35,6 +35,7 @@
     fill          : $text-color;
     margin-right  : 0.15rem;
     margin-left: 0.15rem;
+    opacity: 1;
     padding       : 0.2rem;
     vertical-align: top;
     max-width     : 1rem;
@@ -77,6 +78,18 @@
         @include animation (open-nav-info 0.45s ease-in forwards);
       }
     }
+  }
+
+  &.transition-out {
+    @include transform (translateX(120%));
+    @include transform-origin (right);
+    @include transition (transform $load-post-timing);
+  }
+
+  &.transition-in {
+    @include transform (translateX(0));
+    @include transform-origin (right);
+    @include transition (transform $load-post-timing ease-out);
   }
 }
 

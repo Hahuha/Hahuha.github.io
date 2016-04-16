@@ -59,3 +59,9 @@
   transform: $transform;
 }
 
+@mixin transform-origin($transform) {
+  -webkit-transform-origin: $transform;
+  -moz-transform-origin: $transform;
+  -ms-transform-origin: $transform;
+  transform-origin: $transform;
+}

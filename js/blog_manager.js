@@ -16,7 +16,8 @@ var BlogManager = (function() {
     loadError = {
       hasError: false,
       messages: []
-    };
+    },
+    transitionend = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
   function init() {
     resetError();
@@ -73,7 +74,6 @@ var BlogManager = (function() {
 
   function createListElement(value, index) {
     var section = $('#list').data('section');
-    $('#content .breadcrumb li:last-child').text(value.title);
 
     var listElem = '<li><a href="#" data-id="' + value.id + '"><span class="date">' + value.date + '</span><span class="title">' + value.title + '</span></a></li>';
     $(listElem).appendTo('#list .list').children('a').click(function() {
@@ -85,8 +85,7 @@ var BlogManager = (function() {
       $('#content [class^="go-"]').removeClass('hidden');
       if (index == 0) {
         $('#content .go-left').addClass('hidden');
-      }
-      else if (index >= data[section].length-1) {
+      } else if (index >= data[section].length - 1) {
         $('#content .go-right').addClass('hidden');
       }
 
@@ -96,6 +95,7 @@ var BlogManager = (function() {
         $('#content').data('post-id', result.id);
         $('#content h1').text(result.title);
         $('#content .article').html(decodeURI(result.content));
+        $('#content .breadcrumb li:last-child').text(result.title);
       }
       toPage(transitions.down, pages.content);
     });
@@ -155,21 +155,33 @@ var BlogManager = (function() {
     var post = data[section][postIndex];
 
     // Manage index of post in data and navigation
-    $('#content [class^="go-"]').removeClass('hidden');
-    if (postIndex == 0) {
-      $('#content .go-left').addClass('hidden');
-    }
-    else if (postIndex >= data[section].length-1) {
-      $('#content .go-right').addClass('hidden');
-    }
+    $('#content .menu').removeClass('transition-out transition-in').addClass('transition-out').on(transitionend, function() {
+      $('#content [class^="go-"]').removeClass('hidden');
+      if (postIndex == 0) {
+        $('#content .go-left').addClass('hidden');
+      } else if (postIndex >= data[section].length - 1) {
+        $('#content .go-right').addClass('hidden');
+      }
+      $(this).removeClass('transition-out').addClass('transition-in').on(transitionend, function() {
+        $(this).removeClass('transition-in');
+      });
+    });
 
     // Manage post content
-    if (post != undefined) {
-      $('#content').data('post-index', postIndex);
-      $('#content').data('post-id', post.id);
-      $('#content h1').text(post.title);
-      $('#content .article').html(decodeURI(post.content));
-    }
+    $('#content .wrapper').removeClass('transition-out-left transition-in-left load-right').addClass('transition-out-left').on(transitionend, function() {
+      $(this).removeClass('transition-out-left').addClass('load-right').on(transitionend, function() {
+        if (post != undefined) {
+          $('#content').data('post-index', postIndex);
+          $('#content').data('post-id', post.id);
+          $('#content h1').text(post.title);
+          $('#content .article').html(decodeURI(post.content));
+          $('#content .breadcrumb li:last-child').text(post.title);
+        }
+        $(this).removeClass('load-right').addClass('transition-in-left').on(transitionend, function() {
+          $(this).removeClass('load-right').removeClass('transition-in-left');
+        });
+      });
+    });
   }
 
   init();
