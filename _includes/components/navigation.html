@@ -9,13 +9,13 @@
 
   {% if include.enableNav and include.enableNav == "true" %}
   <span class="separator">&#10744;</span>
-  <div class="newest" data-info="newest">
+  <div class="go-left" data-info="newest">
     {% include components/svg.html id="arrow-left" %}
   </div>
   <div class="go-up" data-info="go up" {% if include.index  %}data-index="{{include.index}}"{% endif %}>
     {% include components/svg.html id="arrow-up" %}
   </div>
-  <div class="older" data-info="older">
+  <div class="go-right" data-info="older">
     {% include components/svg.html id="arrow-right" %}
   </div>
   {% endif %}
