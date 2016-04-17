@@ -1,0 +1,77 @@
+@each $key,$value in $color-map {
+  // Headers
+  @for $i from 1 through 4 {
+    .#{$key} h#{$i},
+    h#{$i}.#{$key} {
+      color: $value;
+    }
+  }
+  // Breadcrumbs
+  .#{$key} .breadcrumb.normal,
+  .#{$key}.breadcrumb.normal {
+    li:last-child {
+      color: $value;
+    }
+  }
+
+  .#{$key} .breadcrumb.reverse,
+  .#{$key}.breadcrumb.reverse {
+    a {
+      color: $value;
+    }
+  }
+
+  .#{$key} .breadcrumb.slash,
+  .#{$key}.breadcrumb.slash {
+    li::after {
+      color: $value;
+    }
+  }
+
+  .#{$key} ul.list,
+  ul.list.#{$key} {
+    li {
+      .date {
+        color: $value;
+
+        &::after {
+          color: $value;
+        }
+      }
+    }
+  }
+  // Highlights
+  .#{$key} span.highlight,
+  span.highlight.#{$key} {
+    color: $value;
+
+    &::before {
+      border-color: $value;
+    }
+  }
+  // Tooltips
+  .#{$key} span.tooltip,
+  span.tooltip.#{$key} {
+    &::before {
+      background-color   : $value;
+      border-bottom-color: $value;
+      color              : $value;
+    }
+
+    &:hover {
+      &::before {
+        background-color: $text-color;
+      }
+
+      &::after {
+        border-top-color: $value;
+      }
+    }
+  }
+  // Notifications
+  .#{$key} span.notification,
+  span.notification.#{$key} {
+    border-bottom: 0.35em solid $value;
+    color        : $value;
+  }
+}

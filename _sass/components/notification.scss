@@ -1,0 +1,11 @@
+/*
+ * NOTIFICATION
+ */
+span.notification {
+  background-color: $text-color;
+  border-bottom   : 0.35em solid $emphasis-color;
+  color           : $emphasis-color;
+  font-size       : 0.6rem;
+  font-weight     : 600;
+  padding         : 0.4em 0.6em;
+}

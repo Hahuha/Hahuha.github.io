@@ -1,0 +1,54 @@
+/*
+ * BREADCRUMBS
+ */
+.breadcrumb {
+  border          : 0.2em solid transparent;
+  font-family     : $header-font-family;
+  font-size       : 0.6rem;
+  font-variant    : small-caps;
+  font-weight     : 300;
+  letter-spacing  : 0.1em;
+  line-height     : 2em;
+  list-style-type : none;
+  padding         : 0.5em;
+  text-align      : center;
+
+  li {
+    display       : inline-block;
+    position      : relative;
+    vertical-align: middle;
+
+    &::after {
+      content       : '╱';
+      font-size     : 1.5em;
+      font-weight   : 100;
+      margin-left   : 0.2em;
+      vertical-align: bottom;
+    }
+  }
+
+  li:last-child {
+    &::after {
+      content: '';
+    }
+  }
+  $darker-emphasis: lighten($emphasis-color, 10);
+
+  &.normal {
+    li:last-child {
+      color: $emphasis-color;
+    }
+  }
+
+  &.reverse {
+    a {
+      color: $emphasis-color;
+    }
+  }
+
+  &.slash {
+    li::after {
+      color: $emphasis-color;
+    }
+  }
+}

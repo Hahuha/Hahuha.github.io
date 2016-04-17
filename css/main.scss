@@ -21,7 +21,7 @@ $grey-color: #fff;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark: darken($grey-color, 25%);
 
-// Width of the content area
+// Breakpoints
 $content-width: 800px;
 $on-palm: 600px;
 $on-laptop: 800px;
@@ -42,4 +42,20 @@ $load-post-timing: 1s;
   }
 }
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "hovercss/hover.scss", "lato", "raleway", "mixins", "base", "about", "layout", "navigation";
+@import "hovercss/hover.scss",
+        "font/lato",
+        "font/raleway",
+        "mixins",
+        "base",
+        "fragments/about",
+        "fragments/content",
+        "fragments/home",
+        "fragments/list",
+        "layout",
+        "components/breadcrumb",
+        "components/highlight",
+        "components/list",
+        "components/navigation",
+        "components/notification",
+        "components/tooltip",
+        "components-color";
