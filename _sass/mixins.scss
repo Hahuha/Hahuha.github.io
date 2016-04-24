@@ -65,3 +65,20 @@
   -ms-transform-origin: $transform;
   transform-origin: $transform;
 }
+
+@mixin writing-mode($mode) {
+  -webkit-writing-mode: $mode;
+  -moz-writing-mode: $mode;
+  -ms-writing-mode: $mode;
+  -o-writing-mode: $mode;
+  writing-mode: $mode;
+}
+
+@mixin select($mode) {
+  -webkit-touch-callout: $mode;
+  -webkit-user-select: $mode;
+  -khtml-user-select: $mode;
+  -moz-user-select: $mode;
+  -ms-user-select: $mode;
+  user-select: $mode;
+}

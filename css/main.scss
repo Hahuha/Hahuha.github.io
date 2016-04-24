@@ -27,7 +27,7 @@ $on-palm: 600px;
 $on-laptop: 800px;
 
 // Timing for transition
-$load-post-timing: 1s;
+$load-post-timing: .4s;
 
 // Use media queries like this:
 // @include media-query($on-palm) {
