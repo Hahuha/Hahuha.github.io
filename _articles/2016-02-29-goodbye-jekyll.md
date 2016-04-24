@@ -2,7 +2,6 @@
 layout: post
 title:  "BB -- Welcome to Jekyll!"
 date:   2016-02-20 16:54:52 +0100
-categories: jekyll update
 style: markdown
 ---
 You’ll find this post in your `_posts` directory.

@@ -11,8 +11,21 @@ email: your-email@domain.com
 description: description
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://carvallegro.github.io/" # the base hostname & protocol for your site
+permalink: /:title
 twitter_username: jekyllrb
 github_username:  carvallegro
+
+collections:
+  articles:
+    collection: articles
+    title: articles
+    output: true
+    permalink: /articles/:title
+  projects:
+    collection: projects
+    title: projects
+    output: true
+    permalink: /projects/:title
 
 # Build settings
 markdown: kramdown

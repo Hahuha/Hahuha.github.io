@@ -1,7 +1,7 @@
 ---
 ---
 [
-  {%  for post in site.posts %}
+  {%  for post in site.projects %}
     {
       "id" : "{{ post.title | xml_escape }}",
       "title": "{{ post.title | xml_escape }}",
