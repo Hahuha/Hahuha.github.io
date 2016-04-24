@@ -79,7 +79,17 @@
 
       a {
         display: block;
+        &[rel="twitter"] svg{
+          fill: $twitter-color;
+        }
+        &[rel="facebook"] svg{
+          fill: $facebook-color;
+        }
+        &[rel="linkedin"] svg{
+          fill: $linkedin-color;
+        }
       }
+
     }
 
     &:hover {

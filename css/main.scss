@@ -3,14 +3,18 @@
 ---
 
 @charset  "utf-8"; // Our variables
-// http://paletton.com/#uid=63G0W0kzUuzlqCIri-0BIomHkiY
-$base-font-family: 'Lato', Helvetica, Arial, sans-serif;
-$header-font-family: 'Raleway', Helvetica, Arial, sans-serif;
+$lato: 'Lato', Helvetica, Arial, sans-serif;
+$raleway: 'Raleway', Helvetica, Arial, sans-serif;
+$base-font-family: $lato;
+$header-font-family: $raleway;
 $base-font-size: calc(100% + 0.5vw);
 $base-font-weight: 400;
 $base-line-height: 1.5em;
 $spacing-unit: 30px;
 
+/*
+ * Colors
+ */
 $text-color: #F5F5F5;
 $background-color: #0D46A1;
 $emphasis-color: #436DB1;
@@ -20,6 +24,10 @@ $color-map: (default: $emphasis-color, articles: $article-color, projects: $proj
 $grey-color: #fff;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark: darken($grey-color, 25%);
+$facebook-color: #3b5999;
+$twitter-color: #55acee;
+$linkedin-color: #0077B5;
+
 
 // Breakpoints
 $content-width: 800px;
