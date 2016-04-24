@@ -94,7 +94,8 @@ var BlogManager = (function() {
       $('#content [class^="go-"]').removeClass('hidden');
       if (index == 0) {
         $('#content .go-left').addClass('hidden');
-      } else if (index >= data[section].length - 1) {
+      }
+      if (index >= data[section].length - 1) {
         $('#content .go-right').addClass('hidden');
       }
 
@@ -161,13 +162,14 @@ var BlogManager = (function() {
   function loadPost(postIndex) {
     var section = $('#list').data('section');
     var post = data[section][postIndex];
-    log('section ' + section );
+    log('section ' + section);
     // Manage index of post in data and navigation
     $('#content .menu').removeClass('transition-out transition-in').addClass('transition-out').on(transitionend, function() {
       $('#content [class^="go-"]').removeClass('hidden');
       if (postIndex == 0) {
         $('#content .go-left').addClass('hidden');
-      } else if (postIndex >= data[section].length - 1) {
+      }
+      if (postIndex >= data[section].length - 1) {
         $('#content .go-right').addClass('hidden');
       }
       $(this).removeClass('transition-out').addClass('transition-in').on(transitionend, function() {
