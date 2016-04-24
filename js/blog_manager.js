@@ -1,3 +1,5 @@
+---
+---
 var BlogManager = (function() {
   var pages = {
       home: 0,
@@ -9,18 +11,26 @@ var BlogManager = (function() {
       projects: null
     },
     keyBinding = {
-      37: "left",
-      38: "up",
-      39: "right"
+      37: 'left',
+      38: 'up',
+      39: 'right'
     },
     loadError = {
       hasError: false,
       messages: []
     },
+    socialShare = {
+      twitter: 'https://twitter.com/intent/tweet?url=__SHARE-URL__&text=__SHARE-TITLE__',
+      facebook: 'http://www.facebook.com/sharer.php?u=__SHARE-URL__',
+      linkedin: 'http://www.linkedin.com/shareArticle?url=__SHARE-URL__&title=__SHARE-TITLE__'
+    },
+    base_url = '{{ site.url + site.baseurl }}',
     transitionend = 'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd';
 
   function init() {
     resetError();
+    shareURL('home', 'gffds', '');
+
     $('.menu [class^="go-"]:not(.hidden)').click(function() {
       if ($(this).hasClass('go-up')) {
         var index = $(this).data('index');
@@ -58,13 +68,13 @@ var BlogManager = (function() {
 
     $('#cat-link a').click(function() {
       var newSection = $(this).data('section');
-      var oldSection = newSection == 'articles' ? 'projects' : 'articles';
+      var oldSection = (newSection == 'articles' ? 'projects' : 'articles');
       $('#list .wrapper, #content .wrapper').removeClass(oldSection).addClass(newSection);
       $('#list .wrapper h1').text(newSection);
       $('#list .list').empty();
       $('#list').data('section', newSection);
       $('.breadcrumb [data-level="1"]').text(newSection);
-      _.each(data.articles, function(value, index, list) {
+      _.each(data[newSection], function(value, index, list) {
         createListElement(value, index);
       });
       toPage(transitions.down, pages.list);
@@ -80,7 +90,6 @@ var BlogManager = (function() {
       var result = _.findWhere(data[section], {
         id: $(this).data("id")
       });
-
       // Manage index of post in data and navigation
       $('#content [class^="go-"]').removeClass('hidden');
       if (index == 0) {
@@ -110,7 +119,7 @@ var BlogManager = (function() {
         loadError.hasError = true;
         loadError.messages.push("Error while loading articles.");
         var err = textStatus + ", " + error;
-        console.log("Request Failed: " + err);
+        console.error("Request Failed: " + err);
         console.error(jqxhr);
       });
 
@@ -122,7 +131,8 @@ var BlogManager = (function() {
         loadError.hasError = true;
         loadError.messages.push("Error while loading projects.");
         var err = textStatus + ", " + error;
-        console.log("Request Failed: " + err);
+        console.error("Request Failed: " + err);
+        console.error(jqxhr);
       });
   }
 
@@ -134,9 +144,7 @@ var BlogManager = (function() {
     if (!transition) {
       transition = transitions.up;
     }
-    // Load datas into next page
 
-    // Go to next page
     PageTransitions.nextPage({
       animation: transition,
       showPage: to
@@ -153,7 +161,7 @@ var BlogManager = (function() {
   function loadPost(postIndex) {
     var section = $('#list').data('section');
     var post = data[section][postIndex];
-
+    log('section ' + section );
     // Manage index of post in data and navigation
     $('#content .menu').removeClass('transition-out transition-in').addClass('transition-out').on(transitionend, function() {
       $('#content [class^="go-"]').removeClass('hidden');
@@ -182,6 +190,15 @@ var BlogManager = (function() {
         });
       });
     });
+  }
+
+  function shareURL(id, title, url) {
+    $('#' + id + ' .menu .social a[rel="twitter"]')
+      .attr('href', socialShare.twitter.replace('__SHARE-URL__', encodeURI(base_url + url)).replace('__SHARE-TITLE__', encodeURI(title)));
+    $('#' + id + ' .menu .social a[rel="facebook"]')
+      .attr('href', socialShare.facebook.replace('__SHARE-URL__', encodeURI(base_url + url)));
+    $('#' + id + ' .menu .social a[rel="linkedin"]')
+      .attr('href', socialShare.linkedin.replace('__SHARE-URL__', encodeURI(base_url + url)).replace('__SHARE-TITLE__', encodeURI(title)));
   }
 
   init();
