@@ -1,13 +1,11 @@
 @function headings($from:1, $to:6) {
-  @if $from == $to {
+   @if $from == $to{
     @return 'h#{$from}';
   }
-
   @else {
-    @return 'h#{$from},' + headings($from+1, $to);
+     @return'h#{$from},' + headings($from+1, $to);
   }
 }
-
 @mixin neutral-a {
   text-decoration: none;
   color          : inherit;
@@ -16,69 +14,61 @@
     outline: none;
   }
 }
-
-
 @mixin keyframes($animation-name) {
-    @-webkit-keyframes #{$animation-name} {
-        @content;
-    }
-    @-moz-keyframes #{$animation-name} {
-        @content;
-    }
-    @-ms-keyframes #{$animation-name} {
-        @content;
-    }
-    @-o-keyframes #{$animation-name} {
-        @content;
-    }
-    @keyframes #{$animation-name} {
-        @content;
-    }
+   @-webkit-keyframes #{$animation-name}{
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+     @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+     @content;
+  }
+  @-o-keyframes #{$animation-name} {
+     @content;
+  }
+  @keyframes #{$animation-name} {
+     @content;
+  }
 }
-
 @mixin animation($str) {
   -webkit-animation: #{$str};
-  -moz-animation: #{$str};
-  -ms-animation: #{$str};
-  -o-animation: #{$str};
-  animation: #{$str};
+  -moz-animation   : #{$str};
+  -ms-animation    : #{$str};
+  -o-animation     : #{$str};
+  animation        : #{$str};
 }
-
 @mixin transition($args...) {
   -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
+  -moz-transition   : $args;
+  -ms-transition    : $args;
+  -o-transition     : $args;
+  transition        : $args;
 }
-
 @mixin transform($transform) {
   -webkit-transform: $transform;
-  -moz-transform: $transform;
-  -ms-transform: $transform;
-  transform: $transform;
+  -moz-transform   : $transform;
+  -ms-transform    : $transform;
+  transform        : $transform;
 }
-
 @mixin transform-origin($transform) {
   -webkit-transform-origin: $transform;
-  -moz-transform-origin: $transform;
-  -ms-transform-origin: $transform;
-  transform-origin: $transform;
+  -moz-transform-origin   : $transform;
+  -ms-transform-origin    : $transform;
+  transform-origin        : $transform;
 }
-
 @mixin writing-mode($mode) {
   -webkit-writing-mode: $mode;
-  -moz-writing-mode: $mode;
-  -ms-writing-mode: $mode;
-  -o-writing-mode: $mode;
-  writing-mode: $mode;
+  -moz-writing-mode   : $mode;
+  -ms-writing-mode    : $mode;
+  -o-writing-mode     : $mode;
+  writing-mode        : $mode;
 }
-
 @mixin select($mode) {
   -webkit-touch-callout: $mode;
-  -webkit-user-select: $mode;
-  -khtml-user-select: $mode;
-  -moz-user-select: $mode;
-  -ms-user-select: $mode;
-  user-select: $mode;
+  -webkit-user-select  : $mode;
+  -khtml-user-select   : $mode;
+  -moz-user-select     : $mode;
+  -ms-user-select      : $mode;
+  user-select          : $mode;
 }

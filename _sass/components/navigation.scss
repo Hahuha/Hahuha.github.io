@@ -9,16 +9,16 @@
   [class*=" bl-"],
   [class^="bl-"] {
     display: block;
-    margin : auto;
     height : 1rem;
+    margin : auto;
     width  : 1rem;
   }
 
   & > span {
-    font-size          : 1.5rem;
-    font-weight        : 100;
-    line-height        : 1.5rem;
-    vertical-align     : top;
+    font-size     : 1.5rem;
+    font-weight   : 100;
+    line-height   : 1.5rem;
+    vertical-align: top;
     @include select (none);
   }
 
@@ -28,35 +28,34 @@
     cursor        : pointer;
     display       : inline-block;
     fill          : $text-color;
-    margin-right  : .15rem;
-    margin-left   : .15rem;
+    margin-right  : 0.15rem;
+    margin-left   : 0.15rem;
     opacity       : 1;
-    padding       : .2rem;
+    padding       : 0.2rem;
     vertical-align: top;
     max-width     : 1rem;
-    // @include animation (close-nav .5s ease-in-out forwards);
+
     &.hidden {
       display: none;
     }
 
     &:not(.share)::after {
-      content             : attr(data-info);
-      visibility          : hidden;
-      font-weight         : 900;
-      font-size           : .7rem;
-      letter-spacing      : .2rem;
-      line-height         : 1rem;
-      overflow            : hidden;
-      max-height          : 0;
-      text-align          : center;
-      text-transform      : uppercase;
-      text-overflow       : ellipsis;
-      vertical-align      : middle;
-      white-space         : nowrap;
-      word-break          : keep-all;
-      word-wrap           : normal;
+      content       : attr(data-info);
+      font-weight   : 900;
+      font-size     : 0.7rem;
+      letter-spacing: 0.2rem;
+      line-height   : 1rem;
+      max-height    : 0;
+      overflow      : hidden;
+      text-align    : center;
+      text-transform: uppercase;
+      text-overflow : ellipsis;
+      vertical-align: middle;
+      visibility    : hidden;
+      white-space   : nowrap;
+      word-break    : keep-all;
+      word-wrap     : normal;
       @include writing-mode (tb-rl);
-      //@include animation (close-nav-info 1s ease-in-out forwards);
     }
 
     .social {
@@ -64,9 +63,9 @@
       line-height    : 1rem;
       list-style-type: none;
       margin         : 0;
-      padding        : 0;
-      overflow       : hidden;
       max-height     : 0;
+      overflow       : hidden;
+      padding        : 0;
       text-align     : center;
       text-transform : uppercase;
       text-overflow  : ellipsis;
@@ -74,22 +73,24 @@
 
       li {
         display       : block;
-        padding-bottom: .3em;
+        padding-bottom: 0.3em;
       }
 
       a {
         display: block;
-        &[rel="twitter"] svg{
+
+        &[rel="twitter"] svg {
           fill: $twitter-color;
         }
-        &[rel="facebook"] svg{
+
+        &[rel="facebook"] svg {
           fill: $facebook-color;
         }
-        &[rel="linkedin"] svg{
+
+        &[rel="linkedin"] svg {
           fill: $linkedin-color;
         }
       }
-
     }
 
     &:hover {
@@ -161,26 +162,26 @@
 
   70% {
     max-height : 10rem;
-    padding-top: .8rem;
+    padding-top: 0.8rem;
   }
 
   to {
     max-height    : 10rem;
-    padding-top   : .6rem;
-    padding-bottom: .1rem;
+    padding-top   : 0.6rem;
+    padding-bottom: 0.1rem;
     color         : $background-color;
   }
 }
 @include keyframes(close-nav-info) {
   from {
     max-height : 10rem;
-    padding-top: .6rem;
+    padding-top: 0.6rem;
     color      : $background-color;
   }
 
   30% {
     max-height : 5rem;
-    padding-top: .8rem;
+    padding-top: 0.8rem;
   }
 
   50% {
