@@ -2,27 +2,29 @@
  * Page HOME
  */
 #home {
+  background-color: $blue-color;
+
   &::after {
-    content: "";
+    content                : '';
     // Image from https://unsplash.com/photos/hIMdKs_0cSE
-    background: url(../img/mountain2.jpeg) no-repeat center center fixed;
+    background             : url('../img/mountain2.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://media02.hongkiat.com/oversized-background-image-design/bg.jpg', sizingMethod='scale')";
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.http://media02.hongkiat.com/oversized-background-image-design/bg.jpg', sizingMethod='scale');
-    opacity: 0.7;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+    -moz-background-size   : cover;
+    -o-background-size     : cover;
+    background-size        : cover;
+    -ms-filter:  "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://media02.hongkiat.com/oversized-background-image-design/bg.jpg', sizingMethod='scale')";
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src= '.http://media02.hongkiat.com/oversized-background-image-design/bg.jpg', sizingMethod='scale');
+    opacity                : 0.7;
+    top                    : 0;
+    left                   : 0;
+    bottom                 : 0;
+    right                  : 0;
+    position               : absolute;
+    z-index                : -1;
   }
 
   h1.main-title {
-    color: $text-color;
+    color       : $white-color;
     font-family : $header-font-family;
     font-size   : 5em;
     font-variant: small-caps;
@@ -31,7 +33,7 @@
     text-align  : center;
 
     &::after {
-      border-top: 0.05rem solid rgba($text-color, .5);
+      border-top: 0.05rem solid rgba($white-color, .5);
       content   : '';
       display   : block;
       margin    : 0.2rem auto 0;
@@ -40,108 +42,90 @@
   }
 
   .blog-description {
-    font-size   : 1.1rem;
-    line-height : 0.8 + 1.1rem;
-    position: relative;
-    text-align  : center;
+    color      : $white-color;
+    font-size  : 1.1rem;
+    line-height: 0.8 + 1.1rem;
+    position   : relative;
+    text-align : center;
 
     span {
-      background-color: $text-color;
-      color         : $background-color;
-      display: inline-block;
-      font-variant: small-caps;
-      margin-left   : 0.3em;
-      max-width: 0;
-      opacity: 0;
-      overflow: hidden;
-      padding-left  : 0.3rem;
-      padding-right : 0.3rem;
-      position: absolute;
-      vertical-align: top;
-      white-space: nowrap;
+      background-color: transparentize($text-color, .1);
+      color           : $background-color;
+      display         : inline-block;
+      font-variant    : small-caps;
+      margin-left     : 0.3em;
+      max-width       : 0;
+      opacity         : 0;
+      overflow        : hidden;
+      padding-left    : 0.3rem;
+      padding-right   : 0.3rem;
+      position        : absolute;
+      vertical-align  : top;
+      white-space     : nowrap;
       @include transition(opacity .0s .7s, max-width 1s );
     }
 
     &:hover span {
       max-width: 1000px;
-      opacity: 1;
+      opacity  : 1;
       @include transition(opacity .5s, max-width 1s );
     }
   }
 
   #cat-link {
-    font-family: $lato;
-    font-size  : 2rem;
-    font-weight: 300;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
+    font-family   : $lato;
+    font-size     : 2rem;
+    font-weight   : 300;
+    margin-left   : auto;
+    margin-right  : auto;
+    margin-top    : 2rem;
     text-transform: uppercase;
-    width: 40vw;
+    width         : 40vw;
 
     span {
       position: relative;
+      @include transition(background-color .5s);
 
-      &::before, &::after {
-        border: 0 solid $emphasis-color;
-        border-top-width: 3px;
-        content: '';
-        display: block;
-        height: 0;
-        margin-left: auto;
-        margin-right: auto;
-        width: 0;
-        @include transition(width .5s ease);
+      &:hover {
+        background-color: transparentize($background-color, .3);
+        @include transition(background-color .5s);
       }
 
       a {
-        padding: 0 .3em;
-        &::before, &::after {
-          border: 0 solid $emphasis-color;
-          border-right-width: 3px;
-          content: '';
-          height: 0;
-          position: absolute;
-          top: 50%;
-          bottom: 50%;
-          @include transform (translateY(-50%));
-          @include transition(height .5s ease);
-        }
-        &::before {
-          right: 0;
-        }
-        &::after {
-          left: 0;
+        color  : $white-color;
+        padding: 0 0.3em;
+        @include transition (color .5s ease);
+
+        &:hover {
+          color: $emphasis-color;
+          @include transition (color .5s ease);
         }
       }
 
-      &:hover {
-        &::before, &::after {
-          width: 60%;
-          @include transition(width .5s ease);
-        }
+      &.articles {
+        float     : left;
+        text-align: left;
 
-        a::before, a::after {
-          height: 60%;
-          @include transition(height .5s ease);
+        a:hover {
+          color: $article-color;
+        }
+      }
+
+      &.projects {
+        float     : right;
+        text-align: right;
+
+        a:hover {
+          color: $project-color;
         }
       }
     }
+  }
 
-    .articles {
-      float: left;
-      text-align: left;
-      &::before, &::after, a::before, a::after {
-        border-color: $article-color;
-      }
-    }
-
-    .projects {
-      float: right;
-      text-align: right;
-      &::before, &::after, a::before, a::after {
-        border-color: $project-color;
-      }
+  .menu {
+    & > div {
+      color: $text-color;
+      fill : $background-color;
     }
   }
 }

@@ -78,18 +78,7 @@
 
       a {
         display: block;
-
-        &[rel="twitter"] svg {
-          fill: $twitter-color;
-        }
-
-        &[rel="facebook"] svg {
-          fill: $facebook-color;
-        }
-
-        &[rel="linkedin"] svg {
-          fill: $linkedin-color;
-        }
+        fill   : $background-color;
       }
     }
 
@@ -119,7 +108,7 @@
 }
 @include keyframes(open-nav) {
   from {
-    background-color: rgba($text-color, .1);
+    background-color: rgba($background-color, .1);
     color           : $background-color;
     fill            : $background-color;
   }
@@ -130,23 +119,6 @@
 
   to {
     background-color: $text-color;
-    color           : $background-color;
-    fill            : $background-color;
-  }
-}
-@include keyframes(close-nav) {
-  from {
-    background-color: $text-color;
-    color           : $background-color;
-    fill            : $background-color;
-  }
-
-  50% {
-    background-color: rgba($text-color, .9);
-  }
-
-  to {
-    background-color: rgba($text-color, .1);
     color           : $background-color;
     fill            : $background-color;
   }
@@ -170,26 +142,5 @@
     padding-top   : 0.6rem;
     padding-bottom: 0.1rem;
     color         : $background-color;
-  }
-}
-@include keyframes(close-nav-info) {
-  from {
-    max-height : 10rem;
-    padding-top: 0.6rem;
-    color      : $background-color;
-  }
-
-  30% {
-    max-height : 5rem;
-    padding-top: 0.8rem;
-  }
-
-  50% {
-    max-height: 3rem;
-    color     : $background-color;
-  }
-
-  to {
-    max-height: 0;
   }
 }
