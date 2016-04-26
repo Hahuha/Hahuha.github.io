@@ -1,0 +1,213 @@
+/*
+ * POPPIFY Notifications
+ */
+div.notification {
+  background-color: $white-color;
+  color           : $emphasis-color;
+  font-size       : 0.6rem;
+  height          : auto;
+  padding         : 0.4em 0.6em;
+
+  &%float-generic {
+    font-size: 0.65rem;
+    padding  : 0;
+    position : fixed;
+    width    : 25vw;
+    z-index: 1000;
+
+    &::before {
+      content         : '';
+      background-color: $emphasis-color;
+      display         : block;
+      height          : 0.4em;
+      position        : absolute;
+      width           : 100%;
+    }
+
+    &.close {
+      @include transform (translate(-50%, -100%));
+      @include transform-origin(top);
+      @include transition (transform 1s ease);
+    }
+
+    span {
+      background-color: $white-color;
+      cursor          : pointer;
+      display         : block;
+      height          : auto;
+      padding         : 0.4em 0.6em;
+      @include select(none);
+
+      &:hover {
+        background-color: darken($white-color, 5);
+      }
+
+      &:active {
+        background-color: darken($white-color, 10);
+      }
+
+      &.close {
+        z-index: -1;
+      }
+    }
+  }
+
+  &.float-bottom {
+    @extend %float-generic;
+    bottom        : 0;
+    padding-bottom: 0.4em;
+    left          : 50%;
+    @include transform(translateX(-50%));
+
+    &::before {
+      bottom: 0;
+      left  : 0;
+      right : 0;
+    }
+
+    &.close {
+      @include transform (translate(-50%, 100%));
+    }
+
+    span.close {
+      @include animation (close-notification-bottom .5s ease forwards);
+    }
+  }
+
+  &.float-top {
+    @extend %float-generic;
+    padding-top: 0.4em;
+    top        : 0;
+    left       : 50%;
+    @include transform(translateX(-50%));
+
+    &::before {
+      top  : 0;
+      left : 0;
+      right: 0;
+    }
+
+    &.close {
+      @include transform (translate(-50%, -100%));
+    }
+
+    span.close {
+      @include animation (close-notification-top .5s ease forwards);
+    }
+  }
+
+  &.float-right {
+    @extend %float-generic;
+    padding-right: 0.4em;
+    right        : 0;
+    top          : 50%;
+    @include transform(translateY(-50%));
+
+    &::before {
+      display: inline-block;
+      height : 100%;
+      right  : 0;
+      top    : 0;
+      width  : 0.4em;
+    }
+
+    &.close {
+      @include transform (translate(100%, -50%));
+    }
+
+    span.close {
+      @include animation (close-notification-right .5s ease forwards);
+    }
+  }
+
+  &.float-left {
+    @extend %float-generic;
+    padding-left: 0.4em;
+    left        : 0;
+    top         : 50%;
+    @include transform(translateY(-50%));
+
+    &::before {
+      display: inline-block;
+      height : 100%;
+      left   : 0;
+      top    : 0;
+      width  : 0.4em;
+    }
+
+    &.close {
+      @include transform (translate(-100%, -50%));
+    }
+
+    span.close {
+      @include animation (close-notification-left .5s ease forwards);
+    }
+  }
+}
+
+@mixin poppify-color($name, $bg, $color) {
+  div.notification.#{$name} {
+    background-color: $bg;
+    color           : $color;
+
+    &%float-generic {
+      span {
+        background-color: $bg;
+
+        &:before {
+          background-color: $color;
+        }
+
+        &:hover {
+          background-color: darken($bg, 5);
+        }
+
+        &:active {
+          background-color: darken($bg, 10);
+        }
+      }
+    }
+
+    &.float-bottom {
+      @extend %float-generic;
+
+      span:last-child {
+        border-bottom: 0.4em solid $color;
+      }
+    }
+
+    &.float-top {
+      @extend %float-generic;
+
+      span:first-child {
+        border-top: 0.4em solid $color;
+      }
+    }
+  }
+}
+
+@mixin close-notification ($direction, $translate) {
+   @include keyframes (close-notification-#{$direction}){
+    from {
+      max-height: 100vh;
+      opacity   : 1;
+    }
+
+    50% {
+      @include transform ($translate);
+    }
+
+    to {
+      max-height : 0;
+      line-height: 0;
+      opacity    : 0;
+      padding    : 0;
+      @include transform ($translate);
+    }
+  }
+}
+
+@include close-notification(top, translateY(-100vh));
+@include close-notification(bottom, translateY(100vh));
+@include close-notification(right, translateX(100%));
+@include close-notification(left, translateX(-100%));

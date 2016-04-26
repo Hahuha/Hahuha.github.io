@@ -30,7 +30,19 @@ var BlogManager = (function() {
   function init() {
     resetError();
     shareURL('home', 'gffds', '');
-
+    $('.menu .social a[rel="clip-link"]').click(function () {
+      if (ctrl_c.copy($(this).find('input')[0])) {
+        poppify.add({
+          direction: 'top',
+          text: 'Link copied to clipboard !'
+        });
+      } else {
+        poppify.add({
+          direction: 'top',
+          text: 'Error while copying to clipboard !'
+        });
+      }
+    });
     $('.menu [class^="go-"]:not(.hidden)').click(function() {
       if ($(this).hasClass('go-up')) {
         var index = $(this).data('index');
@@ -195,6 +207,7 @@ var BlogManager = (function() {
   }
 
   function shareURL(id, title, url) {
+    $('#' + id + ' .menu .social a[rel="clip-link"] input').val(base_url + url);
     $('#' + id + ' .menu .social a[rel="twitter"]')
       .attr('href', socialShare.twitter.replace('__SHARE-URL__', encodeURI(base_url + url)).replace('__SHARE-TITLE__', encodeURI(title)));
     $('#' + id + ' .menu .social a[rel="facebook"]')

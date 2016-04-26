@@ -79,6 +79,11 @@
       a {
         display: block;
         fill   : $background-color;
+        &[rel="clip-link"] input {
+          position: fixed;
+          top: -100vh;
+          right: -100vh;
+        }
       }
     }
 
