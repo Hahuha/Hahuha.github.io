@@ -174,7 +174,7 @@ var BlogManager = (function() {
   function loadPost(postIndex) {
     var section = $('#list').data('section');
     var post = data[section][postIndex];
-    log('section ' + section);
+
     // Manage index of post in data and navigation
     $('#content .menu').removeClass('transition-out transition-in').addClass('transition-out').on(transitionend, function() {
       $('#content [class^="go-"]').removeClass('hidden');
