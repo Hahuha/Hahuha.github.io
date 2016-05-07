@@ -6,6 +6,8 @@
   bottom                : 0;
   color                 : $background-color;
   left                  : 0;
+  opacity               : 1;
+  overflow-y            : scroll;
   position              : fixed;
   right                 : 0;
   margin-left           : auto;
@@ -26,6 +28,10 @@
       height : 2rem;
       width  : 2rem;
     }
+
+    &:hover {
+      @include transform(rotate(90));
+    }
   }
 
   h1 {
@@ -40,23 +46,30 @@
       width     : 30%;
     }
   }
+
+  h2 {
+    color: $text-color / 2;
+    font-variant: all-small-caps;
+    span {
+      background-color: $background-color;
+      padding: .3em .4em;
+      padding-left: 20%;
+    }
+  }
+
   $transition-time      : 0.5s;
   $inner-transition-time: 0.8s;
 
   &.closed {
     height : 0;
-    opacity: 0;
+    opacity: .3;
     top    : 50vh;
     width  : 0;
     z-index: -1;
-    @include transition(height $transition-time ease $inner-transition-time,
-     width $transition-time ease $inner-transition-time,
-     opacity $transition-time/2 ease $inner-transition-time*2,
-      top $transition-time ease $inner-transition-time,
-      z-index 0s ease $inner-transition-time + $transition-time);
+    @include transition(height $transition-time ease $inner-transition-time, width $transition-time ease $inner-transition-time, opacity $transition-time/2 ease $inner-transition-time*2, top $transition-time ease $inner-transition-time, z-index 0s ease $inner-transition-time + $transition-time);
 
     * {
-      opacity: 0;
+      opacity: .3;
       @include transform(translateX(3em));
       @include transition(opacity $inner-transition-time ease, transform $inner-transition-time ease);
     }
@@ -68,10 +81,7 @@
     top    : 0;
     width  : 100vw;
     z-index: 10;
-    @include transition(height $transition-time ease,
-     width $transition-time ease,
-     opacity $transition-time ease,
-      top $transition-time ease);
+    @include transition(height $transition-time ease, width $transition-time ease, opacity $transition-time ease, top $transition-time ease);
 
     * {
       opacity: 1;

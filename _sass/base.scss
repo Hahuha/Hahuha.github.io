@@ -35,12 +35,21 @@ p {
   line-height   : 1.8;
   text-align    : justify;
   vertical-align: middle;
+
 }
 
 .wrapper {
   margin-left : auto;
   margin-right: auto;
   width       : 60vw;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: right;
+  }
 }
 
 #content,
