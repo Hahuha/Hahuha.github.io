@@ -2,6 +2,7 @@ html {
   background-color       : black;
   font-family            : $base-font-family;
   font-size              : $base-font-size;
+  text-rendering         : optimizeLegibility;
   -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -35,7 +36,6 @@ p {
   line-height   : 1.8;
   text-align    : justify;
   vertical-align: middle;
-
 }
 
 .wrapper {
