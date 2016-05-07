@@ -24,7 +24,7 @@
 
   & > div {
     border-radius : 1rem;
-    color         : $background-color;
+    color         : $text-color;
     cursor        : pointer;
     display       : inline-block;
     fill          : $text-color;
@@ -78,7 +78,6 @@
 
       a {
         display: block;
-        fill   : $background-color;
         &[rel="clip-link"] input {
           position: fixed;
           top: -100vh;
@@ -88,8 +87,6 @@
     }
 
     &:hover {
-      @include animation (open-nav .5s ease-out forwards);
-
       &::after,
       .social {
         display   : block;
@@ -111,23 +108,7 @@
     @include transition (transform $load-post-timing ease-out);
   }
 }
-@include keyframes(open-nav) {
-  from {
-    background-color: rgba($background-color, .1);
-    color           : $background-color;
-    fill            : $background-color;
-  }
 
-  50% {
-    background-color: rgba($text-color, .5);
-  }
-
-  to {
-    background-color: $text-color;
-    color           : $background-color;
-    fill            : $background-color;
-  }
-}
 @include keyframes(open-nav-info) {
   from {
     padding-top: 0;
@@ -146,6 +127,6 @@
     max-height    : 10rem;
     padding-top   : 0.6rem;
     padding-bottom: 0.1rem;
-    color         : $background-color;
+
   }
 }
