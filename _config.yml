@@ -10,7 +10,7 @@ title: Simple Thoughts
 email: your-email@domain.com
 description: description
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://carvallegro.github.io/" # the base hostname & protocol for your site
+url: "http://carvallegro.github.io" # the base hostname & protocol for your site
 permalink: /:title
 twitter_username: jekyllrb
 github_username:  carvallegro
