@@ -34,12 +34,13 @@ p {
     }
 
     &:hover {
+      font-weight: 500;
       &::before {
         color  : $background-color;
         height : auto;
         padding: 0.5em 1em;
         opacity: 1;
-        @include transform(translateY(-100%), scale(1));
+        @include transform(translateY(-100%) scale(1));
         @include transition(transform .2s);
       }
     }

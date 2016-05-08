@@ -2,91 +2,92 @@
  * PAGE ABOUT
  */
 #about {
-  background-color      : $text-color;
-  bottom                : 0;
-  color                 : $background-color;
-  left                  : 0;
-  opacity               : 1;
-  overflow-y            : scroll;
-  position              : fixed;
-  right                 : 0;
-  margin-left           : auto;
-  margin-right          : auto;
-
-  .close-btn {
-    cursor  : pointer;
-    position: absolute;
-    top     : 1rem;
-    right   : 1rem;
-    padding : 0.1rem;
-
-    [class*=" bl-"],
-    [class^="bl-"] {
-      display: block;
-      fill   : $background-color;
-      margin : auto;
-      height : 2rem;
-      width  : 2rem;
-    }
-
-    &:hover {
-      @include transform(rotate(90));
-    }
-  }
-
-  h1 {
-    font-size   : 3rem;
-    font-variant: small-caps;
-
-    &::after {
-      border-top: 0.05rem solid rgba($background-color, .5);
-      content   : '';
-      display   : block;
-      margin    : 0.2rem auto 0;
-      width     : 30%;
-    }
-  }
-
-  h2 {
-    color: $text-color / 2;
-    font-variant: all-small-caps;
-    span {
-      background-color: $background-color;
-      padding: .3em .4em;
-      padding-left: 10%;
-    }
-  }
-
-  $transition-time      : 0.5s;
-  $inner-transition-time: 0.8s;
-
-  &.closed {
-    height : 0;
-    opacity: .3;
-    top    : 50vh;
-    width  : 0;
-    z-index: -1;
-    @include transition(height $transition-time ease $inner-transition-time, width $transition-time ease $inner-transition-time, opacity $transition-time/2 ease $inner-transition-time*2, top $transition-time ease $inner-transition-time, z-index 0s ease $inner-transition-time + $transition-time);
-
-    * {
-      opacity: .3;
-      @include transform(translateX(3em));
-      @include transition(opacity $inner-transition-time ease, transform $inner-transition-time ease);
-    }
-  }
-
-  &.opened {
-    height : 100vh;
+    background-color: $text-color;
+    bottom: 0;
+    color: $background-color;
+    left: 0;
     opacity: 1;
-    top    : 0;
-    width  : 100vw;
-    z-index: 10;
-    @include transition(height $transition-time ease, width $transition-time ease, opacity $transition-time ease, top $transition-time ease);
-
-    * {
-      opacity: 1;
-      @include transform(translateX(0));
-      @include transition(opacity $inner-transition-time $transition-time, transform $inner-transition-time $transition-time);
+    overflow-y: scroll;
+    position: fixed;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    $transition-time: 0.5s;
+    $inner-transition-time: 0.8s;
+    &.closed {
+        height: 0;
+        opacity: 0.3;
+        top: 50vh;
+        width: 0;
+        z-index: -1;
+        @include transition(height $transition-time ease $inner-transition-time, width $transition-time ease $inner-transition-time, opacity $transition-time/2 ease $inner-transition-time*2, top $transition-time ease $inner-transition-time, z-index 0s ease $inner-transition-time + $transition-time);
+        * {
+            opacity: 0.3;
+            @include transform(translateX(3em));
+            @include transition(opacity $inner-transition-time ease, transform $inner-transition-time ease);
+        }
     }
-  }
+    &.opened {
+        height: 100vh;
+        opacity: 1;
+        top: 0;
+        width: 100vw;
+        z-index: 10;
+        @include transition(height $transition-time ease, width $transition-time ease, opacity $transition-time ease, top $transition-time ease);
+        * {
+            opacity: 1;
+            @include transform(translateX(0));
+            @include transition(opacity $inner-transition-time $transition-time, transform $inner-transition-time $transition-time);
+        }
+    }
+    .close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.1rem;
+        [class*=" bl-"],
+        [class^="bl-"] {
+            display: block;
+            fill: $background-color;
+            margin: auto;
+            height: 2rem;
+            width: 2rem;
+        }
+        &:hover {
+            @include transform(rotate(90));
+        }
+    }
+    h1 {
+        font-size: 3rem;
+        font-variant: small-caps;
+        &::after {
+            border-top: 0.05rem solid rgba($background-color, .5);
+            content: '';
+            display: block;
+            margin: 0.2rem auto 0;
+            width: 30%;
+        }
+    }
+    h2 {
+        color: $text-color / 2;
+        font-variant: all-small-caps;
+        span {
+            background-color: $background-color;
+            padding: 0.3em 0.4em 0.3em 10%;
+        }
+    }
+    p {
+        a {
+            color: $background-color;
+            &::before {
+                background-color: $background-color;
+            }
+            &:hover {
+                &::before {
+                    color: $text-color;
+                }
+            }
+        }
+    }
 }
