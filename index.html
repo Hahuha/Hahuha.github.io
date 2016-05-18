@@ -1,14 +1,8 @@
 ---
 layout: default
 ---
-
-<div id="pt-main" class="pt-perspective">
-
-  {% include fragments/home.html %}
-
-  {% include fragments/list.html %}
-
-  {% include fragments/content.html %}
-
-  {% include fragments/about.html %}
-</div>
+var initData = {
+  active_page: '#home', // id of the active section on open
+  section: '', // wich section is selected (projects, articles)
+  post_id: '', // Id of the displayed post (if necessary)
+};

@@ -5,9 +5,31 @@
 
   <body>
 
-        {{ content }}
+    <div id="pt-main" class="pt-perspective">
+
+      {% include fragments/home.html %}
+
+      {% include fragments/list.html %}
+
+      {% include fragments/content.html %}
+
+      {% include fragments/about.html %}
+
+    </div>
 
   </body>
+
+  {% comment %}
+    Your page has to implement these values in json.
+    var initData = {
+      active_page: '#home', // id of the active section on open
+      section: 'articles', // wich section is selected (projects, articles)
+      post_id: '', // Id of the displayed post (if necessary)
+    };
+  {% endcomment %}
+  <script type="text/javascript">
+    {{ content }}
+  </script>
 
   {% include javascript.html %}
 
