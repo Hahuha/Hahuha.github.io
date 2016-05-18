@@ -109,6 +109,7 @@ var BlogManager = (function() {
             $('#list .breadcrumb li:last').text(newSection);
             $('.breadcrumb [data-level="1"]').text(newSection);
             newState(newSection, newSection, 'list');
+
             _.each(data[newSection], function(value, index, list) {
                 createListElement(value, index);
             });
