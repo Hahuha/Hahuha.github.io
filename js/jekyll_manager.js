@@ -45,28 +45,24 @@
          * section: 'projects', // wich section is selected (projects, articles)
          * post_id: '', // Id of the displayed post (if necessary)
          */
-        var initData = function (options) {
-          if (!options || !options.active_page) {
-            return;
-          }
-
-          // $('.pt-page').removeClass('.pt-page-current');
-          // $(options.active_page).addClass('pt-page-current');
-
-          if (!options.section) {
-            return;
-          }
-
-          var nbColl = jdata.collections().length;
-          var timedOut = false;
-          window.setTimeout(function () {
-            if (nbColl == collDataLoaded )
-            {
-                $('#cat-link .' + options.section + ' a' ).click();
+        var initData = function(options) {
+            if (!options || !options.active_page) {
+                return;
             }
-          }, 2000);
 
+            if (options.section) {
+                return;
+            }
 
+            $('#cat-link .' + options.section + ' a').click();
+
+            if (!options.post_id) {
+              return;
+            }
+            
+            setTimeout (function () {
+              $('#list .list a[data-id="'+options.post_id+'"]').click();
+            }, 1000);
         }
 
         /*
@@ -117,8 +113,9 @@
         var createListElement = function(value, index) {
             var listElem = '<li><a href="#" data-id="' + value.id + '"><span class="date">' + value.date + '</span><span class="title">' + value.title + '</span></a></li>';
             $(listElem).appendTo('#list .list').children('a').click(function() {
+                console.log('click on a');
                 loadContent($(this).data("id"));
-                jmanager.toPage(pages.content, transitions.down );
+                jmanager.toPage(pages.content, transitions.down);
                 // TODO manage error
             });
 
@@ -166,7 +163,9 @@
          * "constructor" of the blog, init variables and stuff
          */
         jmanager.init = function(options) {
+            // Fetch data using sync ajax request
             this.loadData();
+
             initHome();
 
             // Manage about me section opening
@@ -236,6 +235,7 @@
                 jmanager.toPage(pages.list, transitions.up);
             });
 
+
             // call initData to load blog to required position
             initData(options);
         };
@@ -254,11 +254,11 @@
                     dataType: 'json',
                     async: false,
                     success: function(obj) {
-                        jdata.setCollectionData(array[c].id, obj);
+                        jdata.setCollectionData(coll, obj);
                         ++collDataLoaded;
                         // TODO Manage error
                     },
-                    error : function(jqxhr, textStatus, error) {
+                    error: function(jqxhr, textStatus, error) {
                         // TODO Manage errors
                         ++collDataLoaded;
                         var err = textStatus + ", " + error;
